@@ -32,4 +32,35 @@ router.post("/newUniversity", (req, res) => {
   });
 });
 
+/*
+It will return the list JSON:
+    {
+        "CommentID": 10,
+        "EventID": 1,
+        "UserID": 1,
+        "CommentText": "update message"
+    },
+    {
+        "CommentID": 12,
+        "EventID": 1,
+        "UserID": 1,
+        "CommentText": "message 2"
+    }
+
+*/
+
+router.get("/comments", (req, res) => {
+  // let sql =
+  //   "SELECT Comments.idComment, Comments_event_id, comments.Comments_user_id, comments.message, users.username FROM comments INNER JOIN users ON comments.Comments_user_id = users.idUser";
+
+  let sql =
+    "SELECT CommentID, Comment.EventID, Comment.UserID, CommentText FROM Comment INNER JOIN User ON Comment.UserID =  User.UserID";
+  db.query(sql, (err, result) => {
+    if (err) {
+      return res.status(400).send(err);
+    }
+    res.json(result);
+  });
+});
+
 module.exports = router;

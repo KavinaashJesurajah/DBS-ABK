@@ -15,28 +15,24 @@ router.get("/", (req, res) => {
 });
 
 router.post("/registerUser", (req, res) => {
-  const { userName, password, userType, userEmail, rsoID } = req.body;
+  const { userName, password, userType, userEmail } = req.body;
   console.log(userName, password);
   if (!userName || !password)
     return res.status(400).json("Missing password or username");
 
   let sql =
-    "INSERT INTO User(Username, Password, UserType, Email, RSOID) VALUES (?, ?, ?, ?, ?)";
-  db.query(
-    sql,
-    [userName, password, userType, userEmail, rsoID],
-    (err, result) => {
-      if (err) {
-        if (err.code == "ER_DUP_ENTRY")
-          return res
-            .status(400)
-            .json({ msg: "Username already exists! Please try again" });
-        return res.status(400).send(err);
-      }
-
-      res.status(200).send("User has been created");
+    "INSERT INTO User(Username, Password, UserType, Email) VALUES (?, ?, ?, ?)";
+  db.query(sql, [userName, password, userType, userEmail], (err, result) => {
+    if (err) {
+      if (err.code == "ER_DUP_ENTRY")
+        return res
+          .status(400)
+          .json({ msg: "Username already exists! Please try again" });
+      return res.status(400).send(err);
     }
-  );
+
+    res.status(200).send("User has been created");
+  });
 });
 router.post("/loginUser", (req, res) => {
   const { userName, password } = req.body;
@@ -45,7 +41,6 @@ router.post("/loginUser", (req, res) => {
 
   let sql = "SELECT * FROM User WHERE Username =  ?";
   db.query(sql, userName, (err, data) => {
-    console.log(data);
     if (err) {
       return res.send(200);
     }

@@ -27,19 +27,9 @@ router.post("/create", (req, res) => {
       if (err) {
         return res.status(400).send(err);
       }
-      res.status(200).json("create successfully");
+      res.status(200).json({ message: "create successfully" });
     }
   );
-
-  //   sql =
-  //     "SELECT * FROM Comment WHERE EventID = ? AND UserID = ? AND CommentText = ?";
-  //   db.query(sql, [eventID, userID, commentText], (err, data) => {
-  //     if (err) {
-  //       return res.status(400).send(err);
-  //     }
-  //     console.log(data);
-  //     res.json(data);
-  //   });
 });
 
 router.post("/edit", (req, res) => {
@@ -51,7 +41,7 @@ router.post("/edit", (req, res) => {
       return res.status(400).send(err);
     }
 
-    res.json(result);
+    res.status(200).json({ message: "update successfully" });
   });
 });
 
@@ -64,7 +54,7 @@ router.post("/delete", (req, res) => {
       return res.status(400).send(err);
     }
 
-    res.json(result);
+    res.status(200).json({ message: "delete successfully" });
   });
 });
 module.exports = router;
