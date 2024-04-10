@@ -1,46 +1,34 @@
-// fetch = Function used for making HTTP requests to fetch resources.
-//              (JSON style data, images, files)
-//              Simplifies asynchronous data fetching in JavaScript and
-//              used for interacting with APIs to retrieve and send
-//              data asynchronously over the web.
-//              fetch(url, {options})
-/*
-const { response } = require("express");
-
-fetch("http://localhost:8800/api/auth/loginUser")
-    .then(response => {
-        if (response.ok) {
-            throw new Error("Request failed!");
-        }
-        return response
-    }
-    )
-    .then (data => console.log(data.id))
-    .catch(error => console.log(error)) */
-document.getElementById('loginForm').addEventListener('submit', function(event) {
+document
+  .getElementById("loginForm")
+  .addEventListener("submit", function (event) {
     event.preventDefault(); // Prevent the form from being submitted normally
 
-    const username = document.getElementById('userName').value;
-    const password = document.getElementById('password').value;
+    // const userName = document.getElementById("userName").value;
+    // const password = document.getElementById("password").value;
 
-    fetch('http://localhost:8800/api/auth/loginUser', {
-        method: 'post',
-        headers: {
-            "Content-Type": "text/plain",
-            'Authorization': 'Basic ' + btoa(username + ":" + password),
-        },
+    // I just update it
+    const postData = {
+      userName: document.getElementById("userName").value,
+      password: document.getElementById("password").value,
+    };
+    console.log(postData);
+    fetch("http://localhost:8800/api/auth/loginUser", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(postData),
     })
-    .then(response => {
+      .then((response) => {
         if (!response.ok) {
-            throw new Error("Login failed!");
+          throw new Error("Network response was not ok");
         }
-        return response.json();
-    })
-    .then(data => {
-        console.log('Login successful');
-        console.log(data.id);
-    })
-    .catch(error => {
-        console.log('Error:', error);
-    });
-});
+        return response.json(); // Parse the JSON response
+      })
+      .then((data) => {
+        console.log("Response from API:", data);
+      })
+      .catch((error) => {
+        console.error("Error fetching API:", error);
+      });
+  });
