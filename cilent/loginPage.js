@@ -24,7 +24,7 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
     const password = document.getElementById('password').value;
 
     fetch('http://localhost:8800/api/auth/loginUser', {
-        method: 'get',
+        method: 'post',
         headers: {
             "Content-Type": "text/plain",
             'Authorization': 'Basic ' + btoa(username + ":" + password),
