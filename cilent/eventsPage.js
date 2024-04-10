@@ -14,4 +14,14 @@ window.onload = function() {
     row.insertCell(-1).textContent = eventData.eventID;
     row.insertCell(-1).textContent = eventData.eventCategoryID;
     row.insertCell(-1).textContent = eventData.RSOID;
+    
+    const commentButton = document.createElement('button');
+    commentButton.textContent = 'Comment';
+    commentButton.addEventListener('click', function() {
+        const comment = prompt('Enter your comment:');
+        const commentDisplay = document.createElement('div');
+        commentDisplay.textContent = comment;
+        row.appendChild(commentDisplay);
+    });
+    row.appendChild(commentButton);
 }
