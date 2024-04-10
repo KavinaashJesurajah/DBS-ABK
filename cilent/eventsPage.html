@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Events Page</title>
+    <style>
+        #eventsTable {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        #eventsTable th, #eventsTable td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        #eventsTable tr:nth-child(even) {
+            background-color: #add8e6;
+        }
+        #eventsTable tr:hover {
+            background-color: #add8e6;
+        }
+        #eventsTable th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #000000;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <button id="backButton">Back to Home</button>
+    <table id="eventsTable">
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Time</th>
+            <th>Date</th>
+            <th>Location</th>
+            <th>Contact Phone</th>
+            <th>Contact Email</th>
+            <th>Visibility</th>
+            <th>Event ID</th>
+            <th>Event Category ID</th>
+            <th>RSO ID</th>
+        </tr>
+        <!-- Rows will be added here by eventsPage.js -->
+    </table>
+    <script src="eventsPage.js"></script><script>
+        document.getElementById('backButton').addEventListener('click', function() {
+            window.location.href = 'HomePage.html';
+        });
+    </script>
+</body>
+</html>

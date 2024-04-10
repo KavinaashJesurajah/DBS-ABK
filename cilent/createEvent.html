@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Event</title>
+</head>
+<body>
+    <form id="eventForm">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name"><br>
+        <label for="description">Description:</label><br>
+        <textarea id="description" name="description"></textarea><br>
+        <label for="time">Time:</label><br>
+        <input type="time" id="time" name="time"><br>
+        <label for="date">Date:</label><br>
+        <input type="date" id="date" name="date"><br>
+        <label for="location">Location:</label><br>
+        <input type="text" id="location" name="location"><br>
+        <label for="contactPhone">Contact Phone:</label><br>
+        <input type="tel" id="contactPhone" name="contactPhone"><br>
+        <label for="contactEmail">Contact Email:</label><br>
+        <input type="email" id="contactEmail" name="contactEmail"><br>
+        <label for="visibility">Visibility:</label><br>
+        <select id="visibility" name="visibility">
+            <option value="public">Public</option>
+            <option value="private">Private</option>
+            <option value="rso">RSO</option>
+        </select><br>
+        <button type="button" id="backButton">Back</button>
+        <input type="submit" value="Submit">
+    </form>
+    <script src="createEvent.js"></script><script>
+        document.getElementById('backButton').addEventListener('click', function() {
+            window.location.href = 'HomePage.html';
+        });
+    </script>
+</body>
+</html>

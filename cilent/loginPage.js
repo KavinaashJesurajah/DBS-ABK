@@ -27,6 +27,12 @@ document
       })
       .then((data) => {
         console.log("Response from API:", data);
+        console.log('Login successful');
+        console.log(data.id);
+        // Store user data in local storage or session storage
+        localStorage.setItem('user', JSON.stringify(data));
+        // Redirect to HomePage.html
+        window.location.href = 'HomePage.html';
       })
       .catch((error) => {
         console.error("Error fetching API:", error);

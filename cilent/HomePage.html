@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home Page</title>
+    <style>
+        #userInfo {
+            background-color: lightblue;
+            width: 50%;
+            margin: auto;
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+        #userInfo th, #userInfo td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid rgb(0, 0, 0);
+        }
+        #welcomeMessage {
+            text-align: center;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: black;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+        }
+  .bottom-three {
+     margin-bottom: 5cm;
+  }
+    </style>
+</head>
+<body>
+    <h1 id="welcomeMessage"></h1>
+    <table id="userInfo">
+        <tr>
+            <th>Name</th>
+            <td id="name"></td>
+        </tr>
+        <tr>
+            <th>ID</th>
+            <td id="id"></td>
+        </tr>
+        <tr>
+            <th>University ID</th>
+            <td id="university_id"></td>
+        </tr>
+    </table>
+    <script src="homePage.js"></script>
+
+    <p class="bottom-three">
+
+    <button onclick="window.location.href='createEvent.html'">Create Event</button>
+<button onclick="window.location.href='eventsPage.html'">Events Page</button>
+</body>
+</html>
