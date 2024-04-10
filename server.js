@@ -1,7 +1,16 @@
 const express = require("express");
 const app = express();
-app.use(express.json());
+const cors = require("cors");
 
+app.use(express.json());
+// Use cors middleware
+app.use(
+  cors({
+    origin: "*", // Wildcard is NOT for Production
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    credentials: true,
+  })
+);
 const auth = require("./routes/api/auth");
 app.use("/api/auth", auth);
 const university = require("./routes/api/university");

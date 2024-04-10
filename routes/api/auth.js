@@ -31,9 +31,10 @@ router.post("/registerUser", (req, res) => {
       return res.status(400).send(err);
     }
 
-    res.status(200).send("User has been created");
+    res.status(200).send({ message: "Username register successfully" });
   });
 });
+
 router.post("/loginUser", (req, res) => {
   const { userName, password } = req.body;
   if (userName === "" || password === "")
@@ -44,13 +45,14 @@ router.post("/loginUser", (req, res) => {
     if (err) {
       return res.send(200);
     }
+    console.log(data);
     if (Object.keys(data).length !== 1)
       return res.status(400).json({ msg: "Username not found" });
 
     if (data[0].Password != password)
       return res.status(400).json({ msg: "Invalid username/password" });
 
-    res.status(200).send("User has been logged in");
+    res.status(200).send({ message: "Username login successfully" });
   });
 });
 
